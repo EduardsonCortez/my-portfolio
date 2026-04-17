@@ -10,14 +10,56 @@
     body {
       margin: 0;
       font-family: 'Courier New', monospace;
-      background: #0d1117;
       color: #00ff9f;
+      background: radial-gradient(circle at top, #0f2027, #0d1117, #000000);
     }
 
+    /* HEADER WITH SLIDESHOW */
     header {
+      position: relative;
       text-align: center;
-      padding: 50px 20px;
-      background: #161b22;
+      padding: 80px 20px;
+      overflow: hidden;
+    }
+
+    .header-slideshow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+
+    .header-slideshow img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      animation: slideShow 15s infinite;
+    }
+
+    .header-slideshow img:nth-child(1) { animation-delay: 0s; }
+    .header-slideshow img:nth-child(2) { animation-delay: 5s; }
+    .header-slideshow img:nth-child(3) { animation-delay: 10s; }
+
+    .header-overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(13, 17, 23, 0.85);
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    @keyframes slideShow {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      30% { opacity: 1; }
+      40% { opacity: 0; }
+      100% { opacity: 0; }
     }
 
     header img {
@@ -26,14 +68,13 @@
       border-radius: 50%;
       border: 3px solid #00ff9f;
       box-shadow: 0 0 20px #00ff9f;
+      position: relative;
+      z-index: 1;
     }
 
-    header h1 {
-      margin: 10px 0;
-    }
-
-    header p {
-      color: #aaa;
+    header h1, header p, nav {
+      position: relative;
+      z-index: 1;
     }
 
     nav a {
@@ -53,7 +94,6 @@
       padding-bottom: 10px;
     }
 
-    /* GRID PROJECTS */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -61,7 +101,8 @@
     }
 
     .card {
-      background: #161b22;
+      background: rgba(22, 27, 34, 0.8);
+      backdrop-filter: blur(5px);
       padding: 20px;
       border-radius: 10px;
       transition: 0.3s;
@@ -72,7 +113,6 @@
       box-shadow: 0 0 15px #00ff9f;
     }
 
-    /* IMAGE PREVIEW */
     .project-img {
       width: 100%;
       height: 180px;
@@ -82,7 +122,6 @@
       border: 2px solid #00ff9f;
     }
 
-    /* SKILLS */
     .skills span {
       display: inline-block;
       background: #00ff9f;
@@ -114,6 +153,18 @@
 <body>
 
   <header>
+
+    <!-- SLIDESHOW -->
+    <div class="header-slideshow">
+      <img src="bg1.jpg">
+      <img src="bg2.jpg">
+      <img src="image/bg3.jpg">
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="header-overlay"></div>
+
+    <!-- CONTENT -->
     <img src="profile.jpg" alt="Profile">
     <h1>👨‍💻 Eduardson Cortez</h1>
     <p>ShadowCipher | Cybersecurity & Web Developer</p>
@@ -124,6 +175,7 @@
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
+
   </header>
 
   <section id="about">
@@ -160,36 +212,24 @@
 
     <div class="projects-grid">
 
-      <!-- PROJECT 1 -->
       <div class="card">
         <img src="project1.jpg" class="project-img">
-
         <h3>🏢 Building Management System</h3>
-
-        <p>Interactive system with room directory, floor viewer, and reservation workflow.</p>
-
+        <p>Interactive system with room directory and reservation workflow.</p>
         <button onclick="openProject1()">🌐 Live Demo</button>
       </div>
 
-      <!-- PROJECT 2 -->
       <div class="card">
         <img src="project2.jpg" class="project-img">
-
         <h3>🖼️ Image Compressor</h3>
-
-        <p>Python-based tool for compressing images with web interface.</p>
-
+        <p>Python-based image compression tool.</p>
         <button onclick="alert('Add your link here')">View Project</button>
       </div>
 
-      <!-- PROJECT 3 -->
       <div class="card">
         <img src="project3.jpg" class="project-img">
-
         <h3>🔒 Data Privacy System</h3>
-
-        <p>System for managing user data privacy and compliance.</p>
-
+        <p>System for managing user data privacy.</p>
         <button onclick="alert('Add your link here')">View Project</button>
       </div>
 
