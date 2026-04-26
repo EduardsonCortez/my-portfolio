@@ -4,107 +4,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShadowCipher | Eduardson Cortez</title>
+  <title>Eduardson Cortez | Portfolio</title>
 
   <style>
     body {
       margin: 0;
-      font-family: 'Courier New', monospace;
-      color: #00ff9f;
-      background: radial-gradient(circle at top, #0f2027, #0d1117, #000000);
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+      background: #f5f7fa;
     }
 
-    /* HEADER WITH SLIDESHOW */
+    /* HEADER */
     header {
-      position: relative;
       text-align: center;
-      padding: 80px 20px;
-      overflow: hidden;
-    }
-
-    .header-slideshow {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-    }
-
-    .header-slideshow img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      animation: slideShow 15s infinite;
-    }
-
-    .header-slideshow img:nth-child(1) {
-      animation-delay: 0s;
-    }
-
-    .header-slideshow img:nth-child(2) {
-      animation-delay: 5s;
-    }
-
-    .header-slideshow img:nth-child(3) {
-      animation-delay: 10s;
-    }
-
-    .header-overlay {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: rgba(13, 17, 23, 0.85);
-      top: 0;
-      left: 0;
-      z-index: -1;
-    }
-
-    @keyframes slideShow {
-      0% {
-        opacity: 0;
-      }
-
-      10% {
-        opacity: 1;
-      }
-
-      30% {
-        opacity: 1;
-      }
-
-      40% {
-        opacity: 0;
-      }
-
-      100% {
-        opacity: 0;
-      }
+      padding: 60px 20px;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      color: white;
     }
 
     header img {
-      width: 150px;
-      height: 150px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
-      border: 3px solid #00ff9f;
-      box-shadow: 0 0 20px #00ff9f;
-      position: relative;
-      z-index: 1;
-    }
-
-    header h1,
-    header p,
-    nav {
-      position: relative;
-      z-index: 1;
+      border: 4px solid white;
+      margin-bottom: 10px;
     }
 
     nav a {
       margin: 0 10px;
-      color: #00ff9f;
+      color: white;
       text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     section {
@@ -114,55 +48,67 @@
     }
 
     h2 {
-      border-bottom: 2px solid #00ff9f;
-      padding-bottom: 10px;
+      border-left: 5px solid #4facfe;
+      padding-left: 10px;
     }
 
+    /* CARD */
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* GRID */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
     }
 
-    .card {
-      background: rgba(22, 27, 34, 0.8);
-      backdrop-filter: blur(5px);
-      padding: 20px;
-      border-radius: 10px;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 15px #00ff9f;
-    }
-
-    .project-img {
+    .project-img,
+    .cert-img {
       width: 100%;
       height: 180px;
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 10px;
-      border: 2px solid #00ff9f;
-    }
-
-    /* CERTIFICATES */
-    .cert-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 2px solid #00ff9f;
       cursor: pointer;
-      transition: 0.3s;
     }
 
-    .cert-img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #00ff9f;
+    /* SKILLS */
+    .skills span {
+      display: inline-block;
+      background: #4facfe;
+      color: white;
+      padding: 6px 12px;
+      margin: 5px;
+      border-radius: 20px;
+      font-size: 14px;
     }
 
-    /* MODAL STYLE */
+    /* BUTTON */
+    button {
+      background: #4facfe;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #3a8de0;
+    }
+
+    /* MODAL */
     .modal {
       display: none;
       position: fixed;
@@ -172,7 +118,7 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(0, 0, 0, 0.8);
     }
 
     .modal-content {
@@ -180,8 +126,6 @@
       margin: auto;
       max-width: 90%;
       max-height: 80%;
-      border: 3px solid #00ff9f;
-      box-shadow: 0 0 20px #00ff9f;
       border-radius: 10px;
     }
 
@@ -189,37 +133,15 @@
       position: absolute;
       top: 20px;
       right: 35px;
-      color: #00ff9f;
+      color: white;
       font-size: 40px;
-      font-weight: bold;
       cursor: pointer;
-    }
-
-
-    .skills span {
-      display: inline-block;
-      background: #00ff9f;
-      color: #000;
-      padding: 5px 10px;
-      margin: 5px;
-      border-radius: 5px;
-      font-weight: bold;
-    }
-
-    button {
-      background: #00ff9f;
-      border: none;
-      padding: 10px 15px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-weight: bold;
-      margin-top: 10px;
     }
 
     footer {
       text-align: center;
       padding: 20px;
-      background: #161b22;
+      background: #eaeaea;
     }
   </style>
 </head>
@@ -227,43 +149,31 @@
 <body>
 
   <header>
-
-    <!-- SLIDESHOW -->
-    <div class="header-slideshow">
-      <img src="bg1.jpg">
-      <img src="bg2.jpg">
-      <img src="image/bg3.jpg">
-    </div>
-
-    <!-- OVERLAY -->
-    <div class="header-overlay"></div>
-
-    <!-- CONTENT -->
     <img src="profile.jpg" alt="Profile">
-    <h1>👨‍💻 Eduardson Cortez</h1>
-    <p>ShadowCipher | Cybersecurity & Web Developer</p>
+    <h1>Eduardson Cortez</h1>
+    <p>Cybersecurity & Web Developer</p>
 
     <nav>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
+      <a href="#certificates">Certificates</a>
       <a href="#contact">Contact</a>
     </nav>
-
   </header>
 
   <section id="about">
-    <h2>📌 About Me</h2>
+    <h2>About Me</h2>
     <div class="card">
       <p>
         I am a BS Information Systems student specializing in Cybersecurity.
-        I build systems, websites, and explore ethical hacking.
+        I build systems, develop web applications, and explore ethical hacking.
       </p>
     </div>
   </section>
 
   <section id="skills">
-    <h2>⚡ Skills</h2>
+    <h2>Skills</h2>
     <div class="card skills">
       <span>HTML</span>
       <span>CSS</span>
@@ -272,48 +182,43 @@
       <span>Django</span>
       <span>AWS EC2</span>
       <span>Git & GitHub</span>
-      <span>PC Assembly</span>
-      <span>Windows</span>
-      <span>Ubuntu Linux</span>
-      <span>Canva</span>
-      <span>Figma</span>
-      <span>Microsoft Office</span>
+      <span>Networking</span>
+      <span>Cybersecurity Basics</span>
     </div>
   </section>
 
   <section id="projects">
-    <h2>🚀 Projects</h2>
+    <h2>Projects</h2>
 
     <div class="projects-grid">
 
       <div class="card">
         <img src="project1.jpg" class="project-img">
-        <h3>🏢 Building Management System</h3>
+        <h3>Building Management System</h3>
         <p>Interactive system with room directory and reservation workflow.</p>
-        <button onclick="openProject1()">🌐 Live Demo</button>
+        <button onclick="openProject1()">Live Demo</button>
       </div>
 
       <div class="card">
         <img src="project2.jpg" class="project-img">
-        <h3>🖼️ Image Compressor</h3>
+        <h3>Image Compressor</h3>
         <p>Python-based image compression tool.</p>
         <button onclick="alert('Add your link here')">View Project</button>
       </div>
 
       <div class="card">
         <img src="project3.jpg" class="project-img">
-        <h3>🔒 Data Privacy System</h3>
+        <h3>Data Privacy System</h3>
         <p>System for managing user data privacy.</p>
         <button onclick="alert('Add your link here')">View Project</button>
       </div>
 
     </div>
-
   </section>
 
   <!-- CERTIFICATES -->
   <section id="certificates">
-    <h2>🏆 Certificates</h2>
+    <h2>Certificates</h2>
 
     <div class="projects-grid">
 
@@ -327,26 +232,32 @@
         <h3>Cisco Introduction to Cybersecurity</h3>
       </div>
 
+      <!-- 👉 ADD MO ITO (YUNG BAGONG CERT MO) -->
+      <div class="card">
+        <img src="cyber_cert.jpg" class="cert-img" onclick="openModal(this)">
+        <h3>Basic Cybersecurity Seminar</h3>
+      </div>
+
     </div>
   </section>
 
-  <!-- IMAGE MODAL -->
+  <!-- MODAL -->
   <div id="imgModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
     <img class="modal-content" id="modalImg">
   </div>
 
   <section id="contact">
-    <h2>📬 Contact</h2>
+    <h2>Contact</h2>
     <div class="card">
       <p>Email: eduardcortez05@gmail.com</p>
-      <p>GitHub: https://github.com/EduardsonCortez</p>
-      <button onclick="hello()">Click me: Say Hello 👋</button>
+      <p>GitHub: github.com/EduardsonCortez</p>
+      <button onclick="hello()">Say Hello 👋</button>
     </div>
   </section>
 
   <footer>
-    <p>© 2026 ShadowCipher | Eduardson Cortez</p>
+    <p>© 2026 Eduardson Cortez</p>
   </footer>
 
   <script>
@@ -357,7 +268,6 @@
     function openProject1() {
       window.open("https://website-upcm.github.io/HSSH-MSB/", "_blank");
     }
-
 
     function openModal(img) {
       document.getElementById("imgModal").style.display = "block";
